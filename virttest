@@ -1,0 +1,163 @@
+############################   APICO.API ##############################
+
+server {
+        listen   editport1;
+
+        root /data/www/USERSED/APICO.API_USERSED/backend/web;
+        index index.php index.html index.htm;
+
+        access_log  /data/www/logs/USERSED.apico.api-backend.access.log  main;
+        error_log  /data/www/logs/USERSED.apico.api-backend.error.log error;
+        #server_name example.com;
+
+        location / {
+		try_files $uri $uri/ /index.php?$query_string;
+
+        }
+
+        error_page 404 /404.html;
+
+        error_page 500 502 503 504 /50x.html;
+        location = /50x.html {
+              root /usr/share/nginx/html;
+        }
+
+        # pass the PHP scripts to FastCGI server listening on the php-fpm socket
+        location ~ \.php$ {
+                #try_files $uri =404;
+                fastcgi_pass  127.0.0.1:9000;
+                fastcgi_read_timeout 120;
+                fastcgi_index index.php;
+                 include fastcgi_params;
+                fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+		fastcgi_param PHP_VALUE "xdebug.remote_port=editxdebug1";
+
+        }
+
+
+}
+
+
+server {
+        listen   editport2;
+
+        root /data/www/USERSED/APICO.API_USERSED/frontend/web;
+        index index.php index.html index.htm;
+
+        access_log /data/www/logs/USERSED.apico.api-frontend.access.log  main;
+        error_log  /data/www/logs/USERSED.apico.api-frontend.error.log error;
+
+        #server_name example.com;
+
+        location / {
+                try_files $uri $uri/ /index.php?$query_string;
+
+        }
+
+	error_page 404 /404.html;
+
+        error_page 500 502 503 504 /50x.html;
+        location = /50x.html {
+              root /usr/share/nginx/html;
+        }
+
+	# pass the PHP scripts to FastCGI server listening on the php-fpm socket
+        location ~ \.php$ {
+                #try_files $uri =404;
+                fastcgi_pass  127.0.0.1:9000;
+                fastcgi_read_timeout 120;
+                fastcgi_index index.php;
+                 include fastcgi_params;
+                fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+		fastcgi_param PHP_VALUE "xdebug.remote_port=editxdebug2";
+
+        }
+
+
+}
+
+
+
+############################ APICO.Backend ##########################
+
+server {
+        listen   editport3;
+
+        root /data/www/USERSED/APICO.Backend_USERSED/api/www;
+        index index.php index.html index.htm;
+
+        access_log  /data/www/logs/USERSED.apico.backend-api.access.log  main;
+        error_log  /data/www/logs/USERSED.apico.backend-api.error.log error;
+
+        #server_name example.com;
+
+        location / {
+                try_files $uri $uri/ /index.php?$query_string;
+
+        }
+
+        error_page 404 /404.html;
+
+        error_page 500 502 503 504 /50x.html;
+        location = /50x.html {
+              root /usr/share/nginx/html;
+        }
+
+        # pass the PHP scripts to FastCGI server listening on the php-fpm socket
+        location ~ \.php$ {
+                #try_files $uri =404;
+                fastcgi_pass  127.0.0.1:9000;
+                fastcgi_read_timeout 120;
+                fastcgi_index index.php;
+                 include fastcgi_params;
+                fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+		fastcgi_param PHP_VALUE "xdebug.remote_port=editxdebug3";
+
+        }
+
+
+}
+
+
+server {
+        listen   editport4;
+
+        root /data/www/USERSED/APICO.Backend_USERSED/backend/www;
+        index index.php index.html index.htm;
+
+        access_log  /data/www/logs/USERSED.apico.backend-backend.access.log  main;
+        error_log  /data/www/logs/USERSED.apico.backend-backend.error.log error;
+
+
+        #server_name example.com;
+
+        location / {
+                try_files $uri $uri/ /index.php?$query_string;
+
+        }
+
+	error_page 404 /404.html;
+
+        error_page 500 502 503 504 /50x.html;
+        location = /50x.html {
+              root /usr/share/nginx/html;
+        }
+
+        # pass the PHP scripts to FastCGI server listening on the php-fpm socket
+        location ~ \.php$ {
+                #try_files $uri =404;
+                fastcgi_pass  127.0.0.1:9000;
+                fastcgi_read_timeout 120;
+                fastcgi_index index.php;
+                 include fastcgi_params;
+                fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+		fastcgi_param PHP_VALUE "xdebug.remote_port=editxdebug4";
+
+        }
+
+
+
+
+
+}
+
